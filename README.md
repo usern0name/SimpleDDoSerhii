@@ -1,5 +1,12 @@
 # SimpleDDoSerhii
 
-Приложение на вход принимает два параметра, первый - **IP адрес цели**, второй - **порт**. Адрес является обязательным, порт по умлочанию принимает значение 53
+Приложение на вход принимает два параметра, первый - **IP адрес цели**, второй - **порт**. Порт почти всегда указываем **53**
 
-**Пример запуска на MacOS** : ```/usr/local/share/dotnet/dotnet /Users/usern0name/RiderProjects/SimpleDDoSerhii/SimpleDDoSerhii/bin/Debug/net5.0/SimpleDDoSerhii.dll 212.164.138.129 53 ```
+**Пример запуска на MacOS** (предварительно перейдя в папку с dll) : ```dotnet SimpleDDoSerhii.dll 8.8.8.8 53``` 
+
+**Пример запуска на Windows** (предварительно перейдя в папку с exe) : ```dotnet SimpleDDoSerhii.dll 8.8.8.8 53``` 
+
+[Скачать для MacOS](https://github.com/usern0name/SimpleDDoSerhii/blob/master/publish.zip)
+
+
+[Скачать для Windows](https://github.com/usern0name/SimpleDDoSerhii/blob/master/win-x64.zip)
