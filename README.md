@@ -6,7 +6,7 @@
 
 **Пример запуска на Windows** (предварительно перейдя в папку с exe) : ```dotnet SimpleDDoSerhii.dll 8.8.8.8 53``` 
 
-[Скачать для MacOS](https://github.com/usern0name/SimpleDDoSerhii/blob/master/publish.zip)
+[Скачать для MacOS](https://github.com/usern0name/SimpleDDoSerhii/raw/master/publish.zip)
 
 
-[Скачать для Windows](https://github.com/usern0name/SimpleDDoSerhii/blob/master/win-x64.zip)
+[Скачать для Windows](https://github.com/usern0name/SimpleDDoSerhii/raw/master/win-x64.zip)
