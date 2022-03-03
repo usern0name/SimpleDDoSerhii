@@ -6,5 +6,5 @@
 
 **Пример запуска на Windows** (предварительно перейдя в папку с exe) : ```SimpleDDoSerhii.exe 8.8.8.8 53 UDP``` 
 
-[Скачать для Windows и MacOS](https://github.com/usern0name/SimpleDDoSerhii/raw/master/unversal_1_1.zip)
+[Скачать для Windows и MacOS (последняя версия)](https://github.com/usern0name/SimpleDDoSerhii/raw/master/unversal_1_1.zip)
 
