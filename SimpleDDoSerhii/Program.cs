@@ -14,6 +14,8 @@ namespace SimpleDDoSerhii
         {
             try
             {
+                var rand = new Random().Next(1, 14);
+                Console.ForegroundColor = (ConsoleColor)rand;
                 if (args.Length == 0)
                 {
                     Console.WriteLine("Empty arguments");
